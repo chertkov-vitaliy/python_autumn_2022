@@ -3,15 +3,19 @@
 ## Описание папок
 `unit_one` - папка содержит задачи по первому модулю  
 `lesson__1__06.04.2022` - папка на день проведения занятия  
-`task` - задачи для выполнения  
-`task1.py` - задача нумеруется в диапазоне от 1 до infinity  
+`classwork` - задачи для выполнения в классе  
+`homework` - задачи для выполнения дома
+`task1.py` - задача на каждый урок нумеруется в диапазоне от 1 до infinity  
 `manual` - папка с опорным материалом 
 
 ### Пример папки преподавателя:
 ```
   unit_one
-     -- lesson__1__06.04.2022 
-             -- task
+     -- lesson__1__14.09.2022 
+             -- classwork
+                  -- task1.py
+                  -- task2.py
+             -- homework
                   -- task1.py
                   -- task2.py
              -- manual  
@@ -19,16 +23,19 @@
                   -- file.pdf
                   -- file.py
   unit_two
-     -- 10_lesson__10__06.04.2022
+     -- 10_lesson__10__07.10.2022
      ...
 ```
 
 ```mermaid
 graph TD;
     unit_one-->1_lesson_06.04.2022;
-    1_lesson_06.04.2022-->task;
-    task-->task1.py;
-    task-->task2.py;
+    1_lesson_06.04.2022-->classwork;
+    classwork-->task1.py;
+    classwork-->task2.py;
+    1_lesson_06.04.2022-->homework;
+    homework-->task1.py;
+    homework-->task2.py;
     1_lesson_06.04.2022-->manual;
     manual-->file.md;
     manual-->file.pdf
@@ -37,7 +44,7 @@ graph TD;
 
 
 ### Пример папки слушателя:
-`python_spring_2022` - название репозитария слушателя   
+`python_autumn_2022_task` - название репозитария слушателя   
 `unit_one` - папка содержит задание по модулю. Наименование файлов не
 меняется.
 
@@ -46,6 +53,9 @@ graph TD;
         -- task1.py
         -- task2.py
         -- task3.py
+    unit_two
+        -- task4.py
+        -- task5.py
 ``` 
 
 ```mermaid
