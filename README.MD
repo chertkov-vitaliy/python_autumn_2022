@@ -34,8 +34,8 @@ graph TD;
     classwork-->task1.py;
     classwork-->task2.py;
     1_lesson_06.04.2022-->homework;
-    homework-->task1.py;
     homework-->task2.py;
+    homework-->task3.py;
     1_lesson_06.04.2022-->manual;
     manual-->file.md;
     manual-->file.pdf
