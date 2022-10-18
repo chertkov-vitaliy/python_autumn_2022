@@ -1,0 +1,13 @@
+# todo: Необходимо установить:
+1. СУБД PostgresSQL v.14
+https://www.postgresql.org/download/
+Инструкция по установке https://postgrespro.ru/windows
+2. SQL клиента для  PostgresSQL
+https://www.pgadmin.org/download/pgadmin-4-windows/
+либо
+https://dbeaver.io/download/
+3. Библиотеку работы с Postgres
+pip install psycopg2-binary
+4. Завести аккаунт на сайте
+https://editor.ponyorm.com/
+
