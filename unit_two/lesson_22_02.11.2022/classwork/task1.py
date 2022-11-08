@@ -1,12 +1,19 @@
 # todo: Реализовать функционал систем для авторизации. Любой класс можно расширить до той функциональности которая
 # потребуется в результате написания кода.
-class DB:
+class SUPER_DB(ABC):
+    @abstractmethod
+    def get_connect(self):
+        pass
+
+class DB_Postgres(ABC):
+class DB_Mongo(ABC):
     '''Данный класс содержит конструктор и метод get_connect. В конструкторе инициализируются переменные
      (атрибуты доступа к БД) . Метод возвращает соединение.'''
     def __init__(self, dbname, user, password):
     # В констукторе инициализируем атрибуты доступа к БД
         pass
 
+    @abstractmethod
     def get_connect(self):
         # Метод возвращает соединение к БД
         pass
