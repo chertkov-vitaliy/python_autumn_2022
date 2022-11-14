@@ -25,6 +25,7 @@
 5. Реализовать роутер /student/list - получение списка всех студентов
 студенты могут храниться как в коллекции так и в БД
 
+
 Материал для решения задачи:
 https://flask-russian-docs.readthedocs.io/ru/latest/quickstart.html#id11
 
