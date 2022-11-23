@@ -23,8 +23,12 @@ def login():
 @app.route('/student/list')
 def get_list():
    # connect to DB
-   return  { "id": 12, "name": "Peter I"}
+   return  {"id": 12, "name": "Peter I"}
 
+
+@app.route('/student/list')
+def cancel():
+    return "<span>Ваша песенка спета</span>"
 
 if __name__ == "__main__":
     app.run()

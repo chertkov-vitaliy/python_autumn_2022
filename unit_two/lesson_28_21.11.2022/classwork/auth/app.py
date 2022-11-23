@@ -2,9 +2,12 @@ from flask import Flask
 from flask import request, render_template
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
+import json
 # password = userInput
+from sea_battle import matrix
 
 
+field = matrix()
 # create the app
 app = Flask(__name__)
 # create the extension
@@ -37,7 +40,11 @@ with app.app_context():
 
 @app.route("/")
 def hello_world():
-    return render_template("index.html", title= "Мое приложение!!!!")
+    return render_template("index.html", title="Мое приложение!!!!")
+
+@app.route("/game")
+def run_game():
+    return render_template("field.html", field=field)
 
 
 @app.route("/account/create", methods=["GET", "POST"])
@@ -55,11 +62,16 @@ def account_create():
 
     return render_template("account.html")
 
+
+
+@app.route('/cancel')
+def cancel():
+   # connect to DB
+   return  {"id": 12, "name": "Peter I"}
+
 @app.route("/user/create")
 def user_create():
     return "OK"
-
-
 
 
 if __name__ == "__main__":

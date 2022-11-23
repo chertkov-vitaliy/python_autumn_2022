@@ -17,7 +17,8 @@ def decorator_access(func_menu):
     :param func_menu:
     :return wrapper:
     """
-    id = int(input("Введите ID"))
+    # id = int(input("Введите ID"))
+    id = 1
     def wrapper():
         global access
         if id not in access:
@@ -77,3 +78,4 @@ def render():
 
 if __name__ == "__main__":
     menu()
+

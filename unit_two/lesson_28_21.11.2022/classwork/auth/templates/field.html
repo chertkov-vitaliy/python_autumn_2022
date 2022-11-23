@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!--    <script src="{{ url_for('static', filename='js/game.js') }}"/>-->
+</head>
+
+<body>
+<div  id="contener">
+    <h1> Сапер </h1>
+    <div> Количество попадений: <span id="counter" value="0">0</span> </div>
+    {% for row in field %}
+       <br>
+       {% for i in row %}
+           <input class="field" type="button" data-id="{{i}}" value="*">
+       {% endfor %}
+    {% endfor %}
+</div>
+</body>
+<style>
+.field {
+    width: 50px;
+    height: 50px;
+}
+</style>
+
+
+<script>
+
+   function end_game() {
+        // Optionally the request above could also be done as
+       axios.get('/cancel', {})
+       .then(function (response) {
+          alert("твоя песенка спета !");
+       })
+    }
+
+    function handler(event){
+       counter = document.getElementById("counter")
+       console.log(event.target )
+       console.log(event.target.getAttribute('data-id'))
+       if (event.target.getAttribute('data-id') == 1 ) {
+           event.target.value = "+"
+           event.target.setAttribute('style', "background-color: green;")
+           console.log(counter.getAttribute('value'))
+           count = Number(counter.getAttribute('value')) + 1
+           counter.setAttribute('value',count )
+
+           counter.innerHTML  = count
+           if (count == 5) {
+              end_game()
+           }
+       } else {
+           event.target.value = "-"
+       }
+
+    }
+    cont = document.getElementById("contener")
+    cont.addEventListener("click", handler, true);
+    console.log(cont)
+
+</script>
+
+</html>
+
+
