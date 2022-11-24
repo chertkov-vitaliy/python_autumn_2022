@@ -2,12 +2,10 @@ from flask import Flask
 from flask import request, render_template
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
-import json
+from random import randint as rdi
 # password = userInput
-from sea_battle import matrix
 
 
-field = matrix()
 # create the app
 app = Flask(__name__)
 # create the extension
@@ -40,8 +38,15 @@ with app.app_context():
 
 @app.route("/")
 def hello_world():
-    return render_template("index.html", title="Мое приложение!!!!")
+    return render_template("index.html", title= "Мое приложение!!!!")
 
+@app.route("/game")
+def game():
+    return render_template("game.html", fields=game_field)
+
+@app.route("/cancel")
+def cancel():
+    return  "Ваша песенка спета!"
 
 @app.route("/account/create", methods=["GET", "POST"])
 def account_create():
@@ -60,14 +65,42 @@ def account_create():
 
 
 
-@app.route('/cancel')
-def cancel():
-   # connect to DB
-   return  {"id": 12, "name": "Peter I"}
+
+game_field = []
+
+def get_row(number_of_count=5):
+    row = []
+    func = lambda: rdi(0, 1)
+    for i in range(number_of_count):
+        row.append(func)
+    result = []
+    for l in row:
+        result.append(l())
+    return result
+
+
+def matrix(amount_row=5):
+    global game_field
+    for i in range(amount_row):
+        game_field.append(get_row())
+    return game_field
+
+
+game_field = matrix()
+print(game_field)
+
+
+
+
+
+
+
 
 @app.route("/user/create")
 def user_create():
     return "OK"
+
+
 
 
 if __name__ == "__main__":

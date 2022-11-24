@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сапер</title>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h1>Сапер </h1>
+    <div id="contener">
+     <!-- Шаблон для отображения полей игры  -->
+     <!-- Осуществляем итерацию списка переданного через шаблонизатор сюда в шаблон  -->
+    {% for row in fields %}
+         <br/>
+         {% for item in row %}
+         <!-- формируем для каждого поля input элемент -->
+              <input type="button" data-id="{{item}}" value="*">
+        {% endfor %}
+    {% endfor %}
+    </div>
+
+</body>
+<style>
+input[type="button"] {
+    width: 50px;
+    height: 50px;
+}
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+</style>
+<script>
+     // Функция которая дергает методом GET роутер /cancel на сервере FLASK
+     // используем библиотеку axios
+     function cancel(){
+        axios.get('/cancel', {})
+    .then(function (response) {
+       // сюда приходит ответ от сервера в нашем случае это сообщение "Ваша песенка ..."
+        // отладка в консоль
+        console.log(response)
+        // Вывод сообщение в диалоговое окно браузера
+        alert(response.data)
+    })}
+
+
+     LIVE = 3
+     // Обработчик события который вызывается при клики на элементах поля игры.
+     function handler(event) {
+        console.log(LIVE)
+         // из события event которое было передано обработчику получаем элемент на котором
+         // произошло это событие event.target и смотрим его атрибуты
+        elm = event.target.getAttribute("data-id")
+        if (Number(elm) == 1) {
+            // Задаем элементу input значение +
+            event.target.value = "+"
+            // прикручиваем к элементу стиль
+            event.target.className = "green"
+        } else {
+            event.target.value = "-"
+            // прикручиваем к элементу стиль
+            event.target.className = "red"
+            LIVE -= 1
+            if (LIVE == 0) {
+              //alert("Ваша песенка спета!")
+              // в случае окончания игры вызваем функцию JS
+              // в которой реализована логика вызова Flask роутера
+              cancel()
+            }
+
+        }
+        console.log(elm)
+     }
+    // Получаем из DOM дерева контейнер div с id = "contener"
+    cont = document.getElementById("contener")
+    // Вешаем на этот элемент обработчик события на клик.
+    // Этот элемент является родительским контейнером для вложенных элементов.
+    // Как только пользователь кликнет мышкой в поле игры то событие будет всплывать до родителя
+    //  и  вызовется обработчик handler в него передастся событие event
+    cont.addEventListener("click", handler, true);
+
+</script>
+</html>
