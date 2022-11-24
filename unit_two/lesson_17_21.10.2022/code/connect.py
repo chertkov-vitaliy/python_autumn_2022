@@ -2,7 +2,7 @@ import sys
 import psycopg2
 
 # Connect to your postgres DB
-conn = psycopg2.connect("dbname=auth user=postgres")
+conn = psycopg2.connect("dbname=game user=postgres")
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
