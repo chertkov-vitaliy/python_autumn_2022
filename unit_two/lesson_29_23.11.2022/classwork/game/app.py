@@ -4,8 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 from random import randint as rdi
 # password = userInput
-
-
 # create the app
 app = Flask(__name__)
 # create the extension
@@ -64,8 +62,6 @@ def account_create():
     return render_template("account.html")
 
 
-
-
 game_field = []
 
 def get_row(number_of_count=5):
@@ -87,21 +83,10 @@ def matrix(amount_row=5):
 
 
 game_field = matrix()
-print(game_field)
 
-
-
-
-
-
-
-
-@app.route("/user/create")
+@app.route("/users/list")
 def user_create():
-    return "OK"
-
-
-
+    return {"result": "Ok"}
 
 if __name__ == "__main__":
     app.run()

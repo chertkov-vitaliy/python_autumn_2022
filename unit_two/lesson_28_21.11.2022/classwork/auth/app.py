@@ -65,7 +65,7 @@ def cancel():
    # connect to DB
    return  {"id": 12, "name": "Peter I"}
 
-@app.route("/user/create")
+@app.route("/users/list")
 def user_create():
     return "OK"
 
